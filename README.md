@@ -46,3 +46,27 @@ https://martinfowler.com/eaaDev/EventSourcing.html
 Event Sourcing
 Capture all changes to an application state as a sequence of events.
 
+
+Mega sena:
+
+import random
+from builtins import range
+
+print('Quantas deszenas?')
+dezenas = range(int(input()))
+
+print('Quantos jogos?')
+qtd = int(input())
+
+sortArray = []
+for item0 in range(qtd):
+    for idx, item in enumerate(dezenas):
+        r1 = random.randint(1, 60)
+        sortArray.append(r1)
+    sortArray.sort()
+    for idx, n in enumerate(sortArray):
+        if idx < len(dezenas) - 1:
+            print(str(n).zfill(2), end='-')
+        else:
+            print(str(n).zfill(2))
+    sortArray = []
