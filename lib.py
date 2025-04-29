@@ -10,6 +10,7 @@ import re
 
 import win32con
 import win32gui
+import keyboard
 
 
 class LibClass:
@@ -49,10 +50,12 @@ class LibClass:
             if comando is not None:
                 pyautogui.hotkey(comando)
             elif texto is not None:
-                if self.contem_caracteres_acentuados(texto):
-                    self.type_with_accented_characters(texto)
-                else:
-                    pyautogui.typewrite(message=texto,interval=0.2)
+                # if self.contem_caracteres_acentuados(texto):
+                #     #self.type_with_accented_characters(texto)
+                #     keyboard.write(text=texto,delay=0.2)
+                # else:
+                #     pyautogui.typewrite(message=texto,interval=0.2)
+                keyboard.write(text=texto, delay=0.1)
             elif press is not None:
                 pyautogui.press(press)
             elif hotkey is not None:
@@ -67,9 +70,8 @@ class LibClass:
         # Copia o texto para a área de transferência
         pyperclip.copy(text)
         # Cola o texto no local desejado
-        
         pyautogui.hotkey('ctrl', 'v')
-
+        pyperclip.copy('')
     def contem_caracteres_acentuados(self, texto):
         # Expressão regular para caracteres acentuados
         padrao = r'[áéíóúàèìòùâêîôûãõçÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÃÕÇ]'
